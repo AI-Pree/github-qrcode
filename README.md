@@ -1,2 +1,3 @@
 # Resume-data-matrix
-QR code generator for the resume to share on github profile page
+
+This project aims to generate QR codes for sharing your resume.
