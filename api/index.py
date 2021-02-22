@@ -13,7 +13,7 @@ class handler(BaseHTTPRequestHandler):
 
         
 
-        message ="it does work"    
+        message =qr_code.__VERSION__  
 
         self.wfile.write(message.encode())
         return
