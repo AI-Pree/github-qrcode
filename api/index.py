@@ -18,18 +18,22 @@ class handler(BaseHTTPRequestHandler):
         image = qr.make_image(fill_color=fill, back_color=back)
         return image
 
+    def test(self):
+        return "hey checking something"
+
     def do_GET(self):
         user_path = self.path
         parse_path = dict(parse.parse_qsl(parse.urlsplit(user_path).query))
         self.send_response(200)
-        self.send_header('Content-type','image/png')
+        self.send_header('Content-type','text/plain')
         self.end_headers()
 
-        content = open(qr_code_generator(parse_path["data"], parse_path["fill"], parse_path["background"]), 'rb')
+        message = test()
+        #content = open(qr_code_generator(parse_path["data"], parse_path["fill"], parse_path["background"]), 'rb')
         # if "data" in parse_path:
         #     message = data
         # else:
         #     message = "Hello, stranger!"        
 
-        self.wfile.write(content.read())
+        self.wfile.write(message.encode())
         return
