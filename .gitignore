@@ -132,3 +132,4 @@ dmypy.json
 
 qr-code/
 .vscode
+*.png
