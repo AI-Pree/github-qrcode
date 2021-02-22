@@ -1,1 +1,2 @@
+#dependencies for the app
 qrcode==6.1
