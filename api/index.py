@@ -24,12 +24,12 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','image/png')
         self.end_headers()
-    
+
+        content = open(qr_code_generator(parse_path["data"], parse_path["fill"], parse_path["background"]), 'rb')
         # if "data" in parse_path:
         #     message = data
         # else:
         #     message = "Hello, stranger!"        
-        image = qr_code_generator(parse_path["data"], parse_path["fill"], parse_path["background"])
 
-        self.wfile.write(image)
+        self.wfile.write(content.read())
         return
