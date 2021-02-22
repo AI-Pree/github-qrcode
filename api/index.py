@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import qrcode
+from cowpy import cow
 
 class handler(BaseHTTPRequestHandler):
 
@@ -13,7 +14,6 @@ class handler(BaseHTTPRequestHandler):
 
         
 
-        message =qr_code.__VERSION__  
-
+        message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
         self.wfile.write(message.encode())
         return
