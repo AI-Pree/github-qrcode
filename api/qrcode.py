@@ -25,8 +25,10 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','text/plain')
         self.end_headers()
 
-        if "name" in parse_path:
-            message = "Hello, " + dic["name"] + "!"
+        qr_code_generator("https://ai-pree.github.io/Portfolio/", "black", "white");
+
+        if ["data", "fill", "background" in parse_path:
+            message = parse_path["data"] + "\n" + parse_path["fill"] 
         else:
             message = "Hello, stranger!"        
         
