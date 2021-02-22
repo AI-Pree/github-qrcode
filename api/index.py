@@ -4,7 +4,7 @@ from urllib import parse
 class handler(BaseHTTPRequestHandler):
 
     #generate a qr code based on the value provided in url path
-    def qr_code_generator(self, data, fill, back):
+    def qr_code_generator(self, data, fill="black", back="white"):
         import qrcode
         qr = qrcode.QRCode(
             version=1,
@@ -16,19 +16,20 @@ class handler(BaseHTTPRequestHandler):
         qr.make(fit=True)
 
         image = qr.make_image(fill_color=fill, back_color=back)
-        image.save('portfolio.png')
+        return image
 
     def do_GET(self):
         user_path = self.path
         parse_path = dict(parse.parse_qsl(parse.urlsplit(user_path).query))
         self.send_response(200)
-        self.send_header('Content-type','text/plain')
+        self.send_header('Content-type','image/png')
         self.end_headers()
     
-        if "name" in parse_path:
-            message = "Hello, " + parse_path["name"] + "!"
-        else:
-            message = "Hello, stranger!"        
-        
-        self.wfile.write(message.encode())
+        # if "data" in parse_path:
+        #     message = data
+        # else:
+        #     message = "Hello, stranger!"        
+        image = qr_code_generator(parse_path["data"], parse_path["fill"], parse_path["background"])
+
+        self.wfile.write(image)
         return
