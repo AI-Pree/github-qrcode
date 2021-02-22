@@ -24,14 +24,9 @@ class handler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type','text/plain')
         self.end_headers()
-
-        data = parse_path["data"]
-        fill = parse_path["fill"]
-        background = parse_path["background"]
-        
-
+    
         if "name" in parse_path:
-            message = data + "\n" + fill  
+            message = "Hello, " + parse_path["name"] + "!"
         else:
             message = "Hello, stranger!"        
         
