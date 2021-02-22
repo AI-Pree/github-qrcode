@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
         data = parse_path["data"]
         fill = parse_path["fill"]
         background = parse_path["background"]
-        qr_code_generator(pars);
+        qr_code_generator(pars)
 
         if ["data", "fill"] in parse_path:
             message = data + "\n" + fill  
