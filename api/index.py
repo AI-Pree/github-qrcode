@@ -10,7 +10,7 @@ class handler(BaseHTTPRequestHandler):
         user_path = self.path
         parse_path = dict(parse.parse_qsl(parse.urlsplit(user_path).query))
         self.send_response(200)
-        self.send_header('Content-type','text/plain')
+        self.send_header('Content-type','image/png')
         self.end_headers()
 
         qr = qrcode.QRCode(
@@ -24,6 +24,5 @@ class handler(BaseHTTPRequestHandler):
 
         img = qr.make_image(fill_color="black", back_color="white")
 
-        message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
-        self.wfile.write(message.encode())
+        self.wfile.write(img)
         return
