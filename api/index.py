@@ -21,6 +21,7 @@ class handler(BaseHTTPRequestHandler):
         qr.add_data('Some data')
         qr.make(fit=True)
 
+        img = qr.make_image(fill_color="black", back_color="white")
 
         message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
         self.wfile.write(message.encode())
