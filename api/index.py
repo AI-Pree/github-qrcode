@@ -18,6 +18,8 @@ class handler(BaseHTTPRequestHandler):
             box_size=10,
             border=4,
         )
+        qr.add_data('Some data')
+        qr.make(fit=True)
 
 
         message = cow.Cowacter().milk('Hello from Python from a Serverless Function!')
