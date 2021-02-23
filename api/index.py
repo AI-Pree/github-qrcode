@@ -3,6 +3,7 @@ from urllib import parse
 import qrcode
 import PIL
 from cowpy import cow
+import io
 
 class handler(BaseHTTPRequestHandler):
 
@@ -24,5 +25,10 @@ class handler(BaseHTTPRequestHandler):
 
         img = qr.make_image(fill_color="black", back_color="white")
 
-        self.wfile.write(img)
+        #converting image to byte array
+        img_byte_array = io.BytesIO()
+        img.save(img_byte_array, format="PNG")
+        img_byte_array = img_byte_array.getvalue()
+
+        self.wfile.write(img_byte_array)
         return
