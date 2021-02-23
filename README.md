@@ -1,6 +1,6 @@
 # Resume-data-matrix
 
-This project aims to generate QR codes for sharing your resume.
+This project aims to generate QR codes for sharing your portfolios and other information in your github profile.
 
 ## Usage
 ```
