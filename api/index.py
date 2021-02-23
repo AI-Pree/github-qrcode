@@ -14,16 +14,25 @@ class handler(BaseHTTPRequestHandler):
         self.send_header('Content-type','image/png')
         self.end_headers()
 
+
+        size = parse_path["size"]
+        data = parse_path["data"]
+        fill = parse_path["fill"]
+        back = parse_path["bg"]
+
         qr = qrcode.QRCode(
             version=1,
             error_correction=qrcode.constants.ERROR_CORRECT_L,
-            box_size=10,
+            box_size=size,
             border=4,
         )
-        qr.add_data('Some data')
+
+        
+        
+        qr.add_data(data)
         qr.make(fit=True)
 
-        img = qr.make_image(fill_color="black", back_color="white")
+        img = qr.make_image(fill_color=fill, back_color=back)
 
         #converting image to byte array
         img_byte_array = io.BytesIO()
