@@ -1,6 +1,7 @@
 from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import qrcode
+import PIL
 from cowpy import cow
 
 class handler(BaseHTTPRequestHandler):
